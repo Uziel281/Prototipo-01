@@ -1,0 +1,48 @@
+<div>
+  <!-- Ventana Modal -->
+  <div class="modal" id="miAlquilerModal" tabindex="-1" role="dialog" aria-labelledby="miAlquilerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">(ﾉ◕ヮ◕)ﾉ*♥:･ﾟ💞♡✧ (◡‿◡✿)</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputAddress">Fech.Sal.</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Fech.sal" name="fecha_salida" [(ngModel)]="alquileres.fecha_salida">
+                <label for="inputAddress">Fech.Ent.</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Fech.ent" name="fecha_entrada" [(ngModel)]="alquileres.fecha_entrada">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" role="button" (click)='createAlquiler()' *ngIf="!alquileres.id else elseBlock">Registrar</button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary" role="button" (click)='updateAlquiler()'>Actualizar</button>
+          </ng-template>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/url/alquileres/all']">Close</button>
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="registroExitoso">
+          ALQUILER REGISTRADO EXITOSAMENTE.
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="edicionExitosa">
+          ALQUILER EDITADO EXITOSAMENTE.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

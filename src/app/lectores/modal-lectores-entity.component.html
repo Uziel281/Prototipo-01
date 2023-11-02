@@ -1,0 +1,54 @@
+<div>
+  <!-- Ventana Modal -->
+  <div class="modal" id="miLectorModal" tabindex="-1" role="dialog" aria-labelledby="miLectorModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">(ﾉ◕ヮ◕)ﾉ*♥:･ﾟ💞♡✧ (◡‿◡✿)</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputAddress">NOMBRE</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Nombre" name="nombre" [(ngModel)]="lectores.nombre">
+                <label for="inputAddress">TELEFONO</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Telefono" name="telefono" [(ngModel)]="lectores.telefono">
+                <label for="inputAddress">DIRECCION</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Direccion" name="direccion" [(ngModel)]="lectores.direccion">
+                <label for="inputAddress">CODIGO_POSTAL</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Codigo_postal" name="codigo_postal" [(ngModel)]="lectores.codigo_postal">
+                <label for="inputAddress">OBSERVACIONES</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Observaciones" name="observaciones" [(ngModel)]="lectores.observaciones">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" role="button" (click)='createLector()' *ngIf="!lectores.id else elseBlock">Registrar</button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary" role="button" (click)='updateLector()'>Actualizar</button>
+          </ng-template>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/url/lectores/all']">Close</button>
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="registroExitoso">
+          LECTOR REGISTRADO EXITOSAMENTE.
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="edicionExitosa">
+          LECTOR EDITADO EXITOSAMENTE.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

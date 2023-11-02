@@ -1,0 +1,54 @@
+<div class="container">
+  <button class="btn btn-outline-danger" data-toggle="modal" data-target="#miLectorModal" [routerLink]="['/url/lectores/Crearlectores']">CrearLector</button>
+  <!--- La tabla --->
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">TELEFONO</th>
+        <th scope="col">DIRECCION</th>
+        <th scope="col">CODIGO_POSTAL</th>
+        <th scope="col">OBSERVACIONES</th>
+        <th style="text-align: end;">
+          <div class="rarara" scope="col">ACCIONES</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of lectores">
+        <th scope="row"> {{ item.id}} </th>
+        <td> {{ item.nombre }} </td>
+        <td> {{ item.telefono }} </td>
+        <td> {{ item.direccion }} </td>
+        <td> {{ item.codigo_postal }} </td>
+        <td> {{ item.observaciones }} </td>
+        <td style="text-align: end;">
+          <span> <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#miLectorModal" [routerLink]="['/url/lectores/update', item.id]">EDITAR</button></span>
+          <span><button class="btn btn-danger" (click)="eliminarLectores(item)"> ELIMINAR </button></span>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- La ventana modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'d-block': !!lectoresAEliminar}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmar eliminación</h5>
+        <button type="button" class="close" (click)="cancelarEliminacion()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas eliminar a {{lectoresAEliminar?.nombre}}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cancelarEliminacion()">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="confirmarEliminacion()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<app-modal-lectores-entity></app-modal-lectores-entity>
