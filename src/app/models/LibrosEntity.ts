@@ -6,4 +6,7 @@ export class LibrosEntity{
   paginas?:number
   descripcion?:string
   portada?:string
+  autores?:any;
+  categorias?:any
+  editoriales?:any;
 }

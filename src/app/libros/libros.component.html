@@ -1,5 +1,5 @@
 <div class="container">
-  <button class="btn btn-outline-danger" data-toggle="modal" data-target="#miLibroModal" [routerLink]="['/url/libros/Crearlibros']">CrearLibro</button>
+  <button class="btn btn-outline-danger" data-toggle="modal" data-target="#miLibroModal" [routerLink]="['/url/libros/Crearlibros']" (click)="crearLibro()">CrearLibro</button>
   <!--- La tabla --->
   <table class="table">
     <thead class="thead-dark">
@@ -11,13 +11,16 @@
         <th scope="col">PAGINAS</th>
         <th scope="col">DESCRPCION</th>
         <th scope="col">PORTADA</th>
+        <th scope="col">AUTOR</th>
+        <th scope="col">CATEGORIA</th>
+        <th scope="col">EDITORIAL</th>
         <th style="text-align: end;">
           <div class="rarara" scope="col">ACCIONES</div>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of libros">
+      <tr *ngFor="let item of libroListar">
         <th scope="row"> {{ item.id}} </th>
         <td> {{ item.titulo }} </td>
         <td> {{ item.fecha_de_lanzamiento }} </td>
@@ -25,8 +28,11 @@
         <td> {{ item.paginas }} </td>
         <td> {{ item.descripcion }} </td>
         <td> {{ item.portada }} </td>
+        <td> {{ item.autores.autor }} </td>
+        <td> {{ item.categorias.categoria }} </td>
+        <td> {{ item.editoriales.editorial }} </td>
         <td style="text-align: end;">
-          <span> <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#miLibroModal" [routerLink]="['/url/libros/update', item.id]">EDITAR</button></span>
+          <span> <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#miLibroModal" [routerLink]="['/url/libros/update', item.id]" (click)="editEffect()">EDITAR</button></span>
           <span><button class="btn btn-danger" (click)="eliminarLibro(item)"> ELIMINAR </button></span>
       </td>
       </tr>

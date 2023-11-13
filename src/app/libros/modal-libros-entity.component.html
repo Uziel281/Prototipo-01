@@ -15,17 +15,56 @@
               <div class="form-group col-md-6">
                 <label for="inputAddress">TITULO</label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="Titulo" name="titulo" [(ngModel)]="libros.titulo">
+              </div>
+              <div class="form-group col-md-6">
                 <label for="inputAddress">Fch.Lnz.</label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="Fecha_de_lanzamiento" name="fecha_de_lanzamiento" [(ngModel)]="libros.fecha_de_lanzamiento">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
                 <label for="inputAddress">IDIOMA</label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="Idioma" name="idioma" [(ngModel)]="libros.idioma">
+              </div>
+              <div class="form-group col-md-6">
                 <label for="inputAddress">PAGINAS</label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="Paginas" name="paginas" [(ngModel)]="libros.paginas">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
                 <label for="inputAddress">DESCRIPCION</label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="Descripcion" name="descripcion" [(ngModel)]="libros.descripcion">
+              </div>
+              <div class="form-group col-md-6">
                 <label for="inputAddress">PORTADA</label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="Portada" name="portada" [(ngModel)]="libros.portada">
               </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleFormControlSelect1">AUTOR</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="idAutores" [(ngModel)]="libros.autores" *ngIf="statusUpdate">
+                  <option  value={{data.id}} [selected]="data === libros.autores" *ngFor="let data of listAutor">{{data.autor}}</option>
+                </select>
+                <select class="form-control" id="exampleFormControlSelect1" name="idAutores" [(ngModel)]="libros.autores" *ngIf="statusUpdate==false">
+                  <option  value={{data.id}}  *ngFor="let data of listAutor">{{data.autor}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="exampleFormControlSelect1">CATEGORIA</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="idCategorias" [(ngModel)]="libros.categorias">
+                <option value={{data.id}}  *ngFor="let data of listCategoria">{{data.categoria}}</option>
+              </select>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">EDITORIAL</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="idEditoriales" [(ngModel)]="libros.editoriales">
+                <option value={{data.id}} *ngFor="let data of listEditorial">{{data.editorial}}</option>
+              </select>
+            </div>
             </div>
             <div class="form-group">
               <div class="form-check">

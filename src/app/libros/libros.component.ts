@@ -11,6 +11,7 @@ import { Location } from '@angular/common';
 })
 export class LibrosComponent implements OnInit{
   libros: LibrosEntity[] = [];
+  libroListar:any[] = [];
   libroAEliminar: LibrosEntity | null = null;
 
   constructor(private librosService:LibrosService, private location:Location, private router:Router) { }
@@ -20,7 +21,11 @@ export class LibrosComponent implements OnInit{
   }
   getLibros(){
     this.librosService.getLibros().subscribe(
-      e => this.libros = e
+      (e:any) =>
+     {
+      console.log(e)
+      this.libroListar = e
+     }
     );
   }
   eliminarLibro(libro:LibrosEntity): void{
@@ -29,6 +34,13 @@ export class LibrosComponent implements OnInit{
       this.libroAEliminar = libro;
     }
   }
+  crearLibro(){
+    this.librosService.emit(false)
+  }
+
+  editEffect(){
+    this.librosService.emit(true);
+  }
   setUrlInBrowser(url: string):void {
     this.location.go(url);
   }
@@ -36,8 +48,8 @@ export class LibrosComponent implements OnInit{
     if (this.libroAEliminar && this.libroAEliminar.id) {
       this.librosService.eliminarLibro(this.libroAEliminar.id).subscribe(
         (res) => {
-          this.librosService.getLibros().subscribe((response) => {
-          this.libros = response;
+          this.librosService.getLibros().subscribe((response:any) => {
+          this.libroListar = response;
           this.router.navigate(['/url/editoriales/all']);
           });
           this.libroAEliminar = null;

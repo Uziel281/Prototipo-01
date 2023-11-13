@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { LibrosEntity } from '../models/LibrosEntity';
 
 @Injectable({
@@ -8,21 +8,27 @@ import { LibrosEntity } from '../models/LibrosEntity';
 })
 export class LibrosService {
   url = "http://localhost:8082/url/libros";
+  public  updateEffect:BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private http:HttpClient) { }
   getLibros(){
-    return this.http.get<LibrosEntity[]>(`${this.url}/all`);
+    return this.http.get(`${this.url}/all`);
   }
   getLibroId(idLibro: number){
     return this.http.get<LibrosEntity>(`${this.url}/BuscarID/${idLibro}`);
   }
+
+  public emit(status:boolean){
+    this.updateEffect.next(status);
+  }
+
   crearLibro(libro:LibrosEntity){
     return this.http.post<LibrosEntity>(`${this.url}/Crearlibros`, libro, {
       observe:'response'
     });
   }
-  updateLibro(libro:LibrosEntity) {
-    return this.http.put(`${this.url}/update/${libro.id}`, libro);
+  updateLibro(libro:LibrosEntity,id:any) {
+    return this.http.put(`${this.url}/update/${id}`, libro);
   }
   eliminarLibro(idLibro: number) {
     return this.http.delete(`${this.url}/delete/${idLibro}`);
