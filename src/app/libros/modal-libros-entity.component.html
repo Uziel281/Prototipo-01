@@ -44,16 +44,13 @@
             <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="exampleFormControlSelect1">AUTOR</label>
-                <select class="form-control" id="exampleFormControlSelect1" name="idAutores" [(ngModel)]="libros.autores" *ngIf="statusUpdate">
-                  <option  value={{data.id}} [selected]="data === libros.autores" *ngFor="let data of listAutor">{{data.autor}}</option>
-                </select>
-                <select class="form-control" id="exampleFormControlSelect1" name="idAutores" [(ngModel)]="libros.autores" *ngIf="statusUpdate==false">
+                <select class="form-control" id="exampleFormControlSelect1" name="idAutores" [(ngModel)]="libros.autores" >
                   <option  value={{data.id}}  *ngFor="let data of listAutor">{{data.autor}}</option>
                 </select>
             </div>
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">CATEGORIA</label>
-              <select class="form-control" id="exampleFormControlSelect1" name="idCategorias" [(ngModel)]="libros.categorias">
+              <select class="form-control" id="exampleFormControlSelect1" name="idCategorias" [(ngModel)]="libros.categorias" >
                 <option value={{data.id}}  *ngFor="let data of listCategoria">{{data.categoria}}</option>
               </select>
             </div>

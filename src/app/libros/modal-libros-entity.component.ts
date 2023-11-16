@@ -29,7 +29,11 @@ export class ModalLibrosEntityComponent implements OnInit{
      private categoriasService:CategoriasService, private editorialesService:EditorialesService) { }
 
   ngOnInit(): void {
-    this.librosService.updateEffect.subscribe(data =>  this.statusUpdate = data);
+    this.librosService.updateEffect.subscribe(data =>  {
+      this.statusUpdate = data
+      // alert(this.statusUpdate)
+    })
+
     this.cargarLibro();
     this.getAutores();
     this.getCategorias();
@@ -68,9 +72,19 @@ export class ModalLibrosEntityComponent implements OnInit{
         if(id){
           this.librosService.getLibroId(id).subscribe(
             es=>{
-              this.libros=es
-            console.log(this.libros.autores.id)
-            console.log(this.statusUpdate)
+              this.libros.id = es.id;
+              this.libros.titulo = es.titulo;
+              this.libros.portada = es.portada;
+              this.libros.paginas = es.paginas;
+              this.libros.idioma = es.idioma;
+              this.libros.fecha_de_lanzamiento = es.fecha_de_lanzamiento;
+              this.libros.descripcion = es.descripcion;
+              this.libros.autores = es.autores.id;
+              this.libros.categorias = es.categorias.id;
+              this.libros.editoriales = es.editoriales.id;
+              console.log(this.libros)
+            // console.log(this.libros.autores)
+            // console.log(this.statusUpdate)
           }
           );
         }

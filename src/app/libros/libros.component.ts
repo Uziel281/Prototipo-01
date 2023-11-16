@@ -50,7 +50,7 @@ export class LibrosComponent implements OnInit{
         (res) => {
           this.librosService.getLibros().subscribe((response:any) => {
           this.libroListar = response;
-          this.router.navigate(['/url/editoriales/all']);
+          this.router.navigate(['/url/libros/all']);
           });
           this.libroAEliminar = null;
         }

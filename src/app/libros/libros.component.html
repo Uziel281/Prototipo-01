@@ -33,7 +33,7 @@
         <td> {{ item.editoriales.editorial }} </td>
         <td style="text-align: end;">
           <span> <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#miLibroModal" [routerLink]="['/url/libros/update', item.id]" (click)="editEffect()">EDITAR</button></span>
-          <span><button class="btn btn-danger" (click)="eliminarLibro(item)"> ELIMINAR </button></span>
+          <span><button class="btn btn-danger"  (click)="eliminarLibro(item)"> ELIMINAR </button></span>
       </td>
       </tr>
     </tbody>
